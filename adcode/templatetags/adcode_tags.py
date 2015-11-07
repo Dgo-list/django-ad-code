@@ -46,9 +46,8 @@ class BaseSectionTemplateNode(template.Node):
         templates = self.get_template_list(context)
         if templates:
             inner = template.loader.select_template(templates)
-            nodelist = inner.nodelist
             new_context = self.get_template_context(context)
-            return nodelist.render(new_context)
+            return inner.render(new_context)
         else:
             return ''
 
